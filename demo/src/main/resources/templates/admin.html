@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login</title>
+   <!-- <link rel="stylesheet" href="/css/admin.css">-->
+</head>
+<body style="background-color:yellow; color: green;">
+
+    <div class="navbar">
+        <!-- Add navigation links for the admin dashboard as needed -->
+        <a th:href="@{/login}">Login</a>
+    </div>
+    
+    <div class="page-container">
+        <div class="header">
+            <h1 style="color:blue;font-size:40px;">Admin Login</h1>
+        </div>
+        
+        <!-- Login Form -->
+        <div class="main-content">
+            <form th:action="@{/login}" method="post" th:object="${user}">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" th:field="*{username}" required><br>
+
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" th:field="*{password}" required><br>
+
+                <button type="submit">Login</button>
+            </form>
+            
+            <!-- Display error message if login fails -->
+            <p th:if="${error}" style="color: black;" th:text="${error}"></p>
+        </div>
+</body>
+</html>
