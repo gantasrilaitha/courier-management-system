@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Staff</title>
+</head>
+<body>
+    <h1>Manage Staff</h1>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Password</th>
+                <th>Location</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="staff : ${staffList}">
+                <td th:text="${staff.id}">ID</td>
+                <td th:text="${staff.name}">Name</td>
+                <td th:text="${staff.password}">Password</td>
+                <td th:text="${staff.location}">Location</td>
+                <td>
+                    <form th:action="@{/removestaff}" method="post">
+                       <input type="hidden" name="id" th:value="${staff.id}">
+                        <button type="submit">Remove</button>
+                    </form>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>

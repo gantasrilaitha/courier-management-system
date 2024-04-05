@@ -4,9 +4,79 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Dashboard</title>
-    
+    <!--<link rel="stylesheet" href="/css/styles.css">-->
+    <div class="navbar">
+        <a href="#" id="updateCostLink">Update Cost</a>
+        <!--<a href="/managestaff" id="manageStaffLink">ManageStaff</a>-->
+        <button onclick="window.location.href='/managestaff'">Manage Staff</button>
+    </div>
 </head>
 <body >
-    <p>elcome</p>
+    <!--<div   id="manageStaffLink">
+    <table border="1">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Password</th>
+                <th>Location</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="staff : ${staffList}">
+                <td th:text="${staff.id}">ID</td>
+                <td th:text="${staff.name}">Name</td>
+                <td th:text="${staff.password}">Password</td>
+                <td th:text="${staff.location}">Location</td>
+                
+            </tr>
+        </tbody>
+    </table>
+    </div>-->
+
+    <div id="updateCostForm" style="display: none;">
+        <h2>Update Cost</h2>
+        <form id="updateCostFormSubmit">
+            <label for="cost" color="black">Enter Updated Cost:</label>
+            <input type="text" id="costInput" name="cost" color="black">
+            <button type="submit">Update</button>
+        </form>
+        
+    </div>
+    <script>
+
+        // document.getElementById("manageStaffLink").addEventListener("click", function(event) {
+        //     event.preventDefault(); // Prevent the default action of the link
+        //     var manageStaffContent = document.getElementById("manageStaffContent");
+        //     if (manageStaffContent.style.display === "none") {
+        //         manageStaffContent.style.display = "block";
+        //     } else {
+        //         manageStaffContent.style.display = "none";
+        //     }
+        
+        // });
+
+        document.getElementById("updateCostLink").addEventListener("click", function(event) {
+            event.preventDefault(); // Prevent the default action of the link
+            var updateCostForm = document.getElementById("updateCostForm");
+            if (updateCostForm.style.display === "none") {
+                updateCostForm.style.display = "block";
+            } else {
+                updateCostForm.style.display = "none";
+            }
+        });
+
+        document.getElementById("updateCostFormSubmit").addEventListener("submit", function(event) {
+            event.preventDefault(); // Prevent the default form submission
+            var cost = document.getElementById("costInput").value;
+            alert("Cost Updated successfully");
+            var newcost=cost;
+            console.log(newcost);
+           
+        });
+    </script>
+    
+    
 </body>
 </html>

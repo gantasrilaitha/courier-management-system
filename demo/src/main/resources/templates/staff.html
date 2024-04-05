@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Staff Login</title>
+</head>
+<body>
+    <h1>Staff Login</h1>
+    <form th:action="@{/stafflogin}" method="post" th:object="${staffuser}">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" th:field="*{name}" required><br>
+
+        <!--<label for="username">Username:</label>
+        <input type="text" id="username" name="username" th:field="*{username}" required><br>-->
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" th:field="*{password}" required><br>
+
+        <label for="location">Working Location:</label>
+        <select id="location" name="location" th:field="*{location}" required>
+            <!-- Populate with working locations -->
+            <option value="blr">Bangalore</option>
+            <option value="del">Delhi</option>
+            <option value="hyd">Hyderabad</option>
+        </select><br>
+
+        <!-- Add photo upload field -->
+        <input type="file" id="photo" name="photo"><br>
+
+        <button type="submit">Login</button>
+    </form>
+</body>
+</html>

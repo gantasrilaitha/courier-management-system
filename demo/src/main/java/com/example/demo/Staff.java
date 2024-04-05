@@ -9,14 +9,17 @@ import jakarta.persistence.Table;
 import lombok.Data;
 
 @Data
-@Table(name = "admin")
+@Table(name = "newstaff")
 @Entity
 
-public class Admin {
+public class Staff {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private String username;
+    // private String username;
+    private Long id;
+    private String name;
+    private String location;
     private String password;
 
 }

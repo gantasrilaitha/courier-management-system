@@ -3,25 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Login</title>
+    <title>Customer Login</title>
    <!-- <link rel="stylesheet" href="/css/admin.css">-->
 </head>
-<body style="background-color:yellow; color: green;">
+<body style="background-color:aqua; color: green;">
 
-    <!--<div class="navbar">
-        
-        <a th:href="@{/login}">Login</a>
-    </div>
-    -->
+    
     
     <div class="page-container">
         <div class="header">
-            <h1 style="color:blue;font-size:40px;">Admin Login</h1>
+            <h1 style="color:black;font-size:40px;">Customer Login</h1>
         </div>
         
         <!-- Login Form -->
         <div class="main-content">
-            <form th:action="@{/login}" method="post" th:object="${user}">
+            <form th:action="@{/cuslogin}" method="post" th:object="${user}">
                 <label for="username">Username:</label>
                 <input type="text" id="username" name="username" th:field="*{username}" required><br>
 

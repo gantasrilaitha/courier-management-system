@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Send Courier</title>
+    <script>
+        function calculateTotalCost() {
+            var weight = parseFloat(document.getElementById('weight').value);
+            //var newCost = parseFloat(document.getElementById('newCost').value);
+            var newCost =12;
+            var totalCost = weight * newCost;
+            document.getElementById('totalCost').value = totalCost;
+        }
+    </script>
+</head>
+<body>
+    <h2>Send Courier</h2>
+    <form action="/submitCourier" method="post">
+        <label for="fromName">From Name:</label>
+        <input type="text" id="fromName" name="fromName" required><br>
+
+        <label for="pickupAddress">Pickup Address:</label>
+        <input type="text" id="pickupAddress" name="pickupAddress" required><br>
+
+        <label for="pickupCity">Pickup City:</label>
+        <select id="pickupCity" name="pickupCity">
+            <option value="Bangalore">Bangalore</option>
+            <option value="Delhi">Delhi</option>
+            <option value="Hyderabad">Hyderabad</option>
+        </select><br>
+
+        <label for="toName">Recipient Name:</label>
+        <input type="text" id="toName" name="toName" required><br>
+
+        <label for="toMobile">Recipient Mobile:</label>
+        <input type="text" id="toMobile" name="toMobile" required><br>
+
+        <label for="destinationAddress">Destination Address:</label>
+        <input type="text" id="destinationAddress" name="destinationAddress" required><br>
+
+        <label for="destinationCity">Destination City:</label>
+        <select id="destinationCity" name="destinationCity">
+            <option value="Bangalore">Bangalore</option>
+            <option value="Delhi">Delhi</option>
+            <option value="Hyderabad">Hyderabad</option>
+        </select><br>
+
+        <label for="weight">Weight (in kg):</label>
+        <input type="text" id="weight" name="weight" required onchange=calculateTotalCost()><br>
+
+        <label for="totalCost">Total Cost:</label>
+        <input type="text" id="totalCost" name="totalCost" ><br>
+
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>

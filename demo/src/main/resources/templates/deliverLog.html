@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deliver Log</title>
+</head>
+<body>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Tracking Number</th>
+                <th>To Name</th>
+                <th>Destination Address</th>
+                <th>Destination City</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Loop through deliver log items -->
+            <tr th:each="deliverLog : ${deliverLogs}">
+                <td th:text="${deliverLog.trackingNumber}">Tracking Number</td>
+                <td th:text="${deliverLog.toName}">To Name</td>
+                <td th:text="${deliverLog.destinationAddress}">Destination Address</td>
+                <td th:text="${deliverLog.destinationCity}">Destination City</td>
+                <td>
+                    <form th:action="@{/deliver}" method="post">
+                        <input type="hidden" name="trackingNumber" th:value="${deliverLog.trackingNumber}">
+                        <button type="submit">Deliver</button>
+                    </form>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>

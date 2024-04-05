@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Results</title>
+</head>
+<body>
+    <h2>Search Results</h2>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Tracking Number</th>
+                <th>Pickup Address</th>
+                <th>Pickup City</th>
+                <th>Destination City</th>
+                <th>To Name</th>
+                <th>Total Cost</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Iterate over courierDetailsList and display each result -->
+            <tr th:each="courierDetail : ${courierDetailsList}">
+                <td th:text="${courierDetail.trackingNumber}">Tracking Number</td>
+                <td th:text="${courierDetail.pickupAddress}">Pickup Address</td>
+                <td th:text="${courierDetail.pickupCity}">Pickup City</td>
+                <td th:text="${courierDetail.destinationCity}">Destination City</td>
+                <td th:text="${courierDetail.toName}">To Name</td>
+                <td th:text="${courierDetail.totalCost}">Total Cost</td>
+                <td th:text="${courierDetail.status}">Status</td>
+                <!-- Add more columns as needed -->
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>
