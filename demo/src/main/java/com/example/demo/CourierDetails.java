@@ -21,6 +21,7 @@ public class CourierDetails {
     // private String toMobileNo;
     private String destinationAddress;
     private String destinationCity;
+    private String paymentMethod;
     private double weightKg;
     private double totalCost;
     private String trackingNumber;
@@ -31,7 +32,7 @@ public class CourierDetails {
     }
 
     public CourierDetails(String pickupAddress, String pickupCity, String toName, String toMobile,
-            String destinationAddress, String fromName,
+            String destinationAddress, String fromName, String paymentMethod,
             String destinationCity, double weightKg, double totalCost, String trackingNumber) {
         this.pickupAddress = pickupAddress;
         this.pickupCity = pickupCity;
@@ -43,6 +44,7 @@ public class CourierDetails {
         this.weightKg = weightKg;
         this.totalCost = totalCost;
         this.trackingNumber = trackingNumber;
+        this.paymentMethod = paymentMethod;
         this.status = status;
     }
 
@@ -109,6 +111,14 @@ public class CourierDetails {
 
     public void setDestinationCity(String destinationCity) {
         this.destinationCity = destinationCity;
+    }
+
+    public String getPaymentMethod() {
+        return paymentMethod;
+    }
+
+    public void setPaymentMethod(String paymentMethod) {
+        this.paymentMethod = paymentMethod;
     }
 
     public double getWeight() {

@@ -5,8 +5,52 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Courier Status</title>
 </head>
+<style>
+    /* CSS for Courier Status Page */
+
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        background-color: #f2f2f2;
+        color: #333;
+    }
+
+    .status-container {
+        text-align: center;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    h2 {
+        margin-bottom: 20px;
+    }
+
+    p {
+        font-size: 18px;
+        margin-bottom: 10px;
+    }
+
+    .status-details {
+        display: flex;
+        justify-content: space-between;
+        padding: 10px;
+        border-top: 1px solid #ccc;
+    }
+</style>
+</head>
 <body>
-    <h2>Courier Status</h2>
-    <p>Status: <span th:text="${status}"></span></p>
+    <div class="status-container">
+        <h2>Courier Status</h2>
+        <p>Status: <span th:text="${status}"></span></p>
+        <p>Your courier status is <span th:text="${status}"></span></p>
+        <p>Thank you for using our service.</p>
+    </div>
 </body>
 </html>

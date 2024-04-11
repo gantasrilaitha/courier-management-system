@@ -1,12 +1,74 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Manage Staff</title>
+    <style>
+        /* CSS for Manage Staff Page */
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f2f2f2;
+            color: #333;
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 20px;
+            margin-bottom: 30px;
+            color: blue;
+        }
+
+        table {
+            margin: 0 auto;
+            border-collapse: collapse;
+            width: 80%;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: center;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #333;
+            color: #fff;
+        }
+
+        tr:hover {
+            background-color: #f2f2f2;
+        }
+
+        form {
+            display: inline-block;
+        }
+
+        button[type="submit"] {
+            padding: 8px 16px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+    </style>
 </head>
 <body>
+
     <h1>Manage Staff</h1>
+
     <table border="1">
         <thead>
             <tr>
@@ -24,13 +86,14 @@
                 <td th:text="${staff.password}">Password</td>
                 <td th:text="${staff.location}">Location</td>
                 <td>
-                    <form th:action="@{/removestaff}" method="post">
-                       <input type="hidden" name="id" th:value="${staff.id}">
+                    <form action="/removestaff" method="post">
+                        <input type="hidden" name="id" th:value="${staff.id}">
                         <button type="submit">Remove</button>
                     </form>
                 </td>
             </tr>
         </tbody>
     </table>
+
 </body>
 </html>

@@ -4,18 +4,70 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Send Courier</title>
-    <script>
-        function calculateTotalCost() {
-            var weight = parseFloat(document.getElementById('weight').value);
-            //var newCost = parseFloat(document.getElementById('newCost').value);
-            var newCost =12;
-            var totalCost = weight * newCost;
-            document.getElementById('totalCost').value = totalCost;
+    <style>
+        /* CSS for Send Courier Page */
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f2f2f2;
+            color: #333;
+            text-align: center;
+            padding-top: 50px;
         }
-    </script>
+
+        h2 {
+            margin-bottom: 20px;
+            color: blue;
+        }
+
+        form {
+            max-width: 500px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            display: inline-block;
+            margin-bottom: 10px;
+            text-align: left;
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        select {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        button[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+    </style>
 </head>
 <body>
+
     <h2>Send Courier</h2>
+
     <form action="/submitCourier" method="post">
         <label for="fromName">From Name:</label>
         <input type="text" id="fromName" name="fromName" required><br>
@@ -47,12 +99,28 @@
         </select><br>
 
         <label for="weight">Weight (in kg):</label>
-        <input type="text" id="weight" name="weight" required onchange=calculateTotalCost()><br>
+        <input type="text" id="weight" name="weight" required onchange="calculateTotalCost()"><br>
 
         <label for="totalCost">Total Cost:</label>
-        <input type="text" id="totalCost" name="totalCost" ><br>
+        <input type="text" id="totalCost" name="totalCost"><br>
+
+        <label for="paymentMethod">Payment Method:</label>
+        <select id="paymentMethod" name="paymentMethod">
+            <option value="card">Card</option>
+            <option value="netbanking">NetBanking</option>
+            <option value="cash">Cash</option>
+        </select><br>
 
         <button type="submit">Submit</button>
     </form>
+
+    <script>
+        var newCost = localStorage.getItem('newCost');
+        function calculateTotalCost() {
+            var weight = parseFloat(document.getElementById('weight').value);
+            var totalCost = weight * newCost;
+            document.getElementById('totalCost').value = totalCost.toFixed(2);
+        }
+    </script>
 </body>
 </html>

@@ -1,34 +1,97 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Staff Login</title>
+    <style>
+        /* CSS for Staff Login Page */
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f2f2f2;
+            color: #333;
+            text-align: center;
+            padding-top: 50px;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+            color: blue;
+        }
+
+        form {
+            max-width: 400px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            display: inline-block;
+            margin-bottom: 10px;
+            text-align: left;
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        input[type="password"],
+        select {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        input[type="file"] {
+            margin-bottom: 20px;
+        }
+
+        button[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+    </style>
 </head>
 <body>
-    <h1>Staff Login</h1>
-    <form th:action="@{/stafflogin}" method="post" th:object="${staffuser}">
-        <label for="name">Name:</label>
-        <input type="text" id="name" name="name" th:field="*{name}" required><br>
 
-        <!--<label for="username">Username:</label>
-        <input type="text" id="username" name="username" th:field="*{username}" required><br>-->
+    <h1>Staff Login</h1>
+
+    <form action="/stafflogin" method="post">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required><br>
 
         <label for="password">Password:</label>
-        <input type="password" id="password" name="password" th:field="*{password}" required><br>
+        <input type="password" id="password" name="password" required><br>
 
         <label for="location">Working Location:</label>
-        <select id="location" name="location" th:field="*{location}" required>
-            <!-- Populate with working locations -->
+        <select id="location" name="location" required>
             <option value="blr">Bangalore</option>
             <option value="del">Delhi</option>
             <option value="hyd">Hyderabad</option>
         </select><br>
 
-        <!-- Add photo upload field -->
+        <label for="photo">Photo:</label>
         <input type="file" id="photo" name="photo"><br>
 
         <button type="submit">Login</button>
     </form>
+
 </body>
 </html>

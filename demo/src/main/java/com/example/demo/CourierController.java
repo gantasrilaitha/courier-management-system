@@ -154,7 +154,7 @@ public class CourierController {
 
     @PostMapping("/submitCourier")
     public ResponseEntity<byte[]> submitCourier(@RequestParam String pickupAddress, @RequestParam String fromName,
-            @RequestParam String pickupCity,
+            @RequestParam String pickupCity, @RequestParam String paymentMethod,
             @RequestParam String toName, @RequestParam String toMobile, @RequestParam String destinationAddress,
             @RequestParam String destinationCity, @RequestParam double weight, @RequestParam double totalCost) {
 
@@ -162,7 +162,7 @@ public class CourierController {
         String trackingNumber = generateTrackingNumber();
 
         // Generate the courier receipt image
-        BufferedImage image = generateReceiptImage(fromName, pickupAddress, pickupCity, toName, toMobile,
+        BufferedImage image = generateReceiptImage(fromName, pickupAddress, pickupCity, paymentMethod, toName, toMobile,
                 destinationAddress,
                 destinationCity, weight, totalCost, trackingNumber);
 
@@ -182,6 +182,7 @@ public class CourierController {
         courierDetails.setToMobile(toMobile);
         courierDetails.setDestinationAddress(destinationAddress);
         courierDetails.setDestinationCity(destinationCity);
+        courierDetails.setPaymentMethod(paymentMethod);
         courierDetails.setWeight(weight);
         courierDetails.setTotalCost(totalCost);
         courierDetails.setTrackingNumber(trackingNumber);
@@ -209,7 +210,8 @@ public class CourierController {
         return String.valueOf(trackingNumber);
     }
 
-    private BufferedImage generateReceiptImage(String fromName, String pickupAddress, String pickupCity, String toName,
+    private BufferedImage generateReceiptImage(String fromName, String pickupAddress, String pickupCity,
+            String paymentMethod, String toName,
             String toMobile, String destinationAddress, String destinationCity, double weight, double totalCost,
             String trackingNumber) {
         // Create a new BufferedImage
@@ -248,6 +250,8 @@ public class CourierController {
         g2d.drawString("Weight of Parcel: " + weight + " kg", x, y);
         y += 20;
         g2d.drawString("Total Cost: Rs" + totalCost, x, y);
+        y += 20;
+        g2d.drawString("Payment Method: " + paymentMethod, x, y);
         y += 20;
         g2d.drawString("Tracking Number: " + trackingNumber, x, y);
         y += 20;

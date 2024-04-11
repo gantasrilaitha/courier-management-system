@@ -3,9 +3,64 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Deliver Log</title>
+    <title>Delivery Log</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f2f2f2;
+            color: #333;
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 20px;
+            margin-bottom: 30px;
+            color: blue;
+        }
+
+        table {
+            margin: 0 auto;
+            border-collapse: collapse;
+            width: 80%;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: center;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #333;
+            color: #fff;
+        }
+
+        tr:hover {
+            background-color: #f2f2f2;
+        }
+
+        button[type="submit"] {
+            padding: 8px 16px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+    </style>
 </head>
 <body>
+    <h1>Deliver Log</h1>
     <table border="1">
         <thead>
             <tr>
@@ -17,7 +72,7 @@
             </tr>
         </thead>
         <tbody>
-            <!-- Loop through deliver log items -->
+            <!-- Loop through delivery log items -->
             <tr th:each="deliverLog : ${deliverLogs}">
                 <td th:text="${deliverLog.trackingNumber}">Tracking Number</td>
                 <td th:text="${deliverLog.toName}">To Name</td>
@@ -26,11 +81,36 @@
                 <td>
                     <form th:action="@{/deliver}" method="post">
                         <input type="hidden" name="trackingNumber" th:value="${deliverLog.trackingNumber}">
-                        <button type="submit">Deliver</button>
+                        <button type="submit" onclick="handleDeliver(event)">Deliver</button>
                     </form>
                 </td>
             </tr>
         </tbody>
     </table>
+
+    <script>
+        function handleDeliver(event) {
+            event.preventDefault(); // Prevent form submission
+            var row = event.target.closest('tr'); // Find the closest row
+            var formData = new FormData(event.target.closest('form'));
+            fetch('/deliver', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => {
+                if (response.ok) {
+                    // Remove the row from the table
+                    row.parentNode.removeChild(row);
+                    // You can add more actions here if needed
+                } else {
+                    alert('Error occurred while picking up the courier.');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('Error occurred while picking up the courier.');
+            });
+        }
+    </script>
 </body>
 </html>

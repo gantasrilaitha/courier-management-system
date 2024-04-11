@@ -4,19 +4,82 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Login</title>
-   <!-- <link rel="stylesheet" href="/css/admin.css">-->
-</head>
-<body style="background-color:yellow; color: green;">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-DbGDyQcHge3hiJsZyrkW9DkBgEOG4HNLlOrA+umfT+YJ35Y6HemQKPrqU0Trf6Br5G8btC9nYW+0MwQQPW10ng==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        /* CSS for Admin Login Page */
 
-    <!--<div class="navbar">
-        
-        <a th:href="@{/login}">Login</a>
-    </div>
-    -->
-    
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 100vh;
+            background-color: yellow;
+            color: green;
+        }
+
+        .page-container {
+            width: 80%;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .main-content {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input[type="text"],
+        input[type="password"],
+        button[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button[type="submit"] {
+            background-color: #007bff;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        .error-message {
+            color: red;
+            margin-top: 10px;
+        }
+
+        /* Responsive Styling */
+
+        @media screen and (max-width: 768px) {
+            .page-container {
+                width: 90%;
+            }
+        }
+    </style>
+</head>
+<body>
     <div class="page-container">
         <div class="header">
-            <h1 style="color:blue;font-size:40px;">Admin Login</h1>
+            <h1 style="color:blue;font-size:40px;"><i class="fas fa-user-lock"></i> Admin Login</h1>
         </div>
         
         <!-- Login Form -->
@@ -32,7 +95,8 @@
             </form>
             
             <!-- Display error message if login fails -->
-            <p th:if="${error}" style="color: black;" th:text="${error}"></p>
+            <p th:if="${error}" class="error-message" th:text="${error}"></p>
         </div>
+    </div>
 </body>
 </html>

@@ -1,12 +1,70 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pickup Log</title>
+    <style>
+        /* CSS for Pickup Log Page */
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f2f2f2;
+            color: #333;
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 20px;
+            margin-bottom: 30px;
+            color: blue;
+        }
+
+        table {
+            margin: 0 auto;
+            border-collapse: collapse;
+            width: 80%;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: center;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #333;
+            color: #fff;
+        }
+
+        tr:hover {
+            background-color: #f2f2f2;
+        }
+
+        button[type="submit"] {
+            padding: 8px 16px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+    </style>
 </head>
 <body>
+
     <h1>Pickup Log</h1>
+
     <table border="1">
         <thead>
             <tr>
@@ -22,30 +80,40 @@
                 <td th:text="${courierDetail.trackingNumber}">Tracking Number</td>
                 <td th:text="${courierDetail.pickupAddress}">Pickup Address</td>
                 <td th:text="${courierDetail.pickupCity}">Pickup City</td>
-                <!--<td><button onclick="pickupAction('${courierDetail.trackingNumber}')">Pickup</button></td>-->
-                <td><form th:action="@{/pickup}" method="post">
-                    <input type="hidden" name="trackingNumber" th:value="${courierDetail.trackingNumber}">
-                    <button type="submit" >Pickup</button>
-                </form></td>
+                <td>
+                    <form action="/pickup" method="post">
+                        <input type="hidden" name="trackingNumber" th:value="${courierDetail.trackingNumber}">
+                        <button type="submit" onclick="handlePickup(event)">Pickup</button>
+                    </form>
+                </td>
             </tr>
         </tbody>
     </table>
-
-    <script th:inline="javascript">
-        // function pickupAction(trackingNumber) {
-        //     // Perform pickup action here (you can use AJAX to send a request to the server)
-        //     alert('Pickup action triggered ');
-        // }
-        function removeRow(button) {
-            //console.log(trackingNumber);
-            // Remove the row from the HTML table
-            var row = button.closest('tr');
-            if (row) {
-                row.remove();
-            } else {
-                alert('Row not found');
-            }
+    
+    <script>
+        function handlePickup(event) {
+            event.preventDefault(); // Prevent form submission
+            var row = event.target.closest('tr'); // Find the closest row
+            var formData = new FormData(event.target.closest('form'));
+            fetch('/pickup', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => {
+                if (response.ok) {
+                    // Remove the row from the table
+                    row.parentNode.removeChild(row);
+                    // You can add more actions here if needed
+                } else {
+                    alert('Error occurred while picking up the courier.');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('Error occurred while picking up the courier.');
+            });
         }
     </script>
+
 </body>
 </html>

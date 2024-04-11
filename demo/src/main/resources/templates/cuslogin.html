@@ -3,13 +3,60 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cus Dashboard</title>
-    
+    <title>Customer Dashboard</title>
+    <style>
+        /* CSS for Customer Dashboard Page */
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #f2f2f2;
+        }
+
+        .container {
+            text-align: center;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            margin: 10px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+
+        .button:hover {
+            background-color: #0056b3;
+        }
+
+        p {
+            margin-top: 20px;
+            font-size: 18px;
+            color: #555;
+        }
+    </style>
 </head>
-<body >
-    <button onclick="window.location.href='/sendcourier'">SendCourier</button>
-    <button onclick="window.location.href='/enterTrackingNumber'">See Courier Status</button>
-    <button onclick="window.location.href='/enterfullname'">See Booking History</button>
-    <p>welcome</p>
+<body>
+    <div class="container">
+        <h1>Welcome to Your Dashboard</h1>
+        <button class="button" onclick="window.location.href='/sendcourier'">Send Courier</button>
+        <button class="button" onclick="window.location.href='/enterTrackingNumber'">See Courier Status</button>
+        <button class="button" onclick="window.location.href='/enterfullname'">See Booking History</button>
+    </div>
 </body>
 </html>
