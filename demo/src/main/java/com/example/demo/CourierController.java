@@ -22,6 +22,7 @@ import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
 import javax.imageio.ImageIO;
 
+import org.springframework.stereotype.Component;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -38,6 +39,23 @@ import java.util.List;
 
 @Controller
 public class CourierController {
+    private CourierController() {
+    }
+
+    // Singleton instance of CourierController
+    private static CourierController instance = null;
+
+    // Get method to retrieve the singleton instance
+    public static CourierController getInstance() {
+        if (instance == null) {
+            synchronized (CourierController.class) {
+                if (instance == null) {
+                    instance = new CourierController();
+                }
+            }
+        }
+        return instance;
+    }
 
     @GetMapping("/home")
     public String home(Model model) {
@@ -328,6 +346,7 @@ public class CourierController {
         CourierDetails courierDetails = courierdetailRepository.findByTrackingNumber(trackingNumber).orElse(null);
         if (courierDetails != null) {
             courierDetails.setStatus("Picked");
+
             courierdetailRepository.save(courierDetails);
             // return "Courier with tracking number " + courierDetails.getTrackingNumber() +
             // " has been picked.";
