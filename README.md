@@ -29,8 +29,8 @@ Make sure you have the following installed on your system:
 
 ## **How to use❓**
 Refer to [Codebase](https://github.com/gantasrilaitha/courier-management-java/tree/main/demo/src/main/java/com/example/demo)
-
-```mvn spring-boot:run``` to run the application
+1. change directory :```cd demmo```
+2. ```mvn spring-boot:run``` to run the application
 
 
 
