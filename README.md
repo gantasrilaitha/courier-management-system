@@ -29,7 +29,7 @@ Make sure you have the following installed on your system:
 
 ## **How to use❓**
 Refer to [Codebase](https://github.com/gantasrilaitha/courier-management-java/tree/main/demo/src/main/java/com/example/demo)
-1. change directory :```cd demmo```
+1. change directory :```cd demo```
 2. ```mvn spring-boot:run``` to run the application
 
 
