@@ -19,7 +19,7 @@ Enables Admins to update courier costs and manage staff actions, Staff to view p
   <img src="https://img.icons8.com/nolan/48/api.png" alt="REST API" width="40" height="40"/>
 </p>
 
-# **Prerequisites**
+## **Prerequisites**
 Make sure you have the following installed on your system:
 <p align="center">
   <a href="https://www.oracle.com/java/technologies/javase-jdk17-downloads.html">Java JDK (v17 or higher)</a> &nbsp;&nbsp;&nbsp;
