@@ -8,6 +8,10 @@ Enables Admins to update courier costs and manage staff actions, Staff to view p
 - 👥**Staff**: View pickup and delivery logs based on their working location.
 - 👥**Customers**: Place courier requests, view courier status, and access booking history.
 
+## **Design Principles & Patterns Used**
+- **Patterns :** MVC, Singleton, DAO(Data Access Object), Adapter
+- **Principles :** Single Responsibility Principle(SRP), Separation of Concerns, Open Closed Principle(OCP), Liskov Substitution Principle(LSP)
+  
 ## **Tech-Stack used!**
 <p align="center">
   <img src="https://img.icons8.com/color/48/000000/java-coffee-cup-logo.png" alt="Java" width="40" height="40"/>
