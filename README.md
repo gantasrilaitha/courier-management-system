@@ -35,6 +35,7 @@ Make sure you have the following installed on your system:
 Refer to [Codebase](https://github.com/gantasrilaitha/courier-management-java/tree/main/demo/src/main/java/com/example/demo)
 1. change directory :```cd demo```
 2. ```mvn spring-boot:run``` to run the application
+3. visit ```localhost:8080``` to see the application running
 
 
 
