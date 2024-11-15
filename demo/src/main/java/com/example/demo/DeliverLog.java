@@ -6,11 +6,13 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
+//entity classes annotated with JPA annotations(@Entity) that will map to your database tables.
 @Entity
 public class DeliverLog {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY) // auto increments primary key values(ex:1,2,3...), doesnt
+                                                        // create sequence table unlike GenerationType.AUTO
     private Long id;
     private String trackingNumber;
     private String toName;

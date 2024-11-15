@@ -1,8 +1,12 @@
 package com.example.demo;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
+//Instead of an XML file, Spring Boot applications typically use Java classes annotated with @Configuration to define beans.
+//Spring Boot automatically scans for components (beans) by default using annotations like @Component, @Service, @Repository, and @Controller.
 @Service
 public class AdminService {
 

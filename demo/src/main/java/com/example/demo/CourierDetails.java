@@ -7,7 +7,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
-@Entity
+@Entity // map below class to the respective table in the db
 public class CourierDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
