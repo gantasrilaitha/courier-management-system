@@ -7,6 +7,10 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import lombok.Data;
+import lombok.Getter;// getter anootation 
+import lombok.Setter;//setter annotation
+// Getter & setter annotation when used at class level, applies to all attributes of the class
+//If you apply them at the field level, it only generates getters and setters for that specific field
 
 @Data // generates getters & setters for all properties in the class defined(so need
       // not deine them explicitly)

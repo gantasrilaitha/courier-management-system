@@ -37,6 +37,7 @@ import com.example.demo.StaffRepository;
 import com.example.demo.Staff;
 import java.util.List;
 
+//below mwntioned class will be the controller class
 @Controller
 public class CourierController {
     private CourierController() {
@@ -56,8 +57,12 @@ public class CourierController {
         }
         return instance;
     }
+    // @RequestMapping:- general-purpose annotation ,that can map a request to any
+    // HTTP method (GET, POST, etc.).
+    // the specific HTTP method can be explicitly mentioned: @RequestMapping(value =
+    // "/users", method = RequestMethod.GET)
 
-    @GetMapping("/home")
+    @GetMapping("/home") // HTTP GET METHOD
     public String home(Model model) {
         System.out.println("Homepg");
         return "home";
@@ -124,7 +129,7 @@ public class CourierController {
         }
     }
 
-    @PostMapping("/stafflogin")
+    @PostMapping("/stafflogin") // HTTP POST METHOD
     public String processStaffForm(@RequestParam String name,
             // @RequestParam String username,
             @RequestParam String password,
@@ -212,6 +217,9 @@ public class CourierController {
         // Return the image bytes as ResponseEntity
         return new ResponseEntity<>(imageBytes, headers, HttpStatus.OK);
     }
+    // @PutMapping-HTTP PUT METHOD(UPDATE OBJECTS)
+    // @PatchMapping-HTTP PATCH METHOD ,PATCH: Used to partially update resources
+    // (sending only the fields that need to be updated).
 
     @PostMapping("/installCourier")
     public ResponseEntity<CourierDetails> installCourier(@RequestBody CourierDetails courierDetails) {
