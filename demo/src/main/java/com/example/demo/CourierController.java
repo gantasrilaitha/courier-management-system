@@ -38,7 +38,10 @@ import com.example.demo.Staff;
 import java.util.List;
 
 //below mwntioned class will be the controller class
-@Controller
+@Controller // only for web projects, uses MVC
+
+// @RestController is for access other web projects(distributable)-allows
+// application to application interaction & doesnt use MVC
 public class CourierController {
     private CourierController() {
     }
@@ -62,7 +65,7 @@ public class CourierController {
     // the specific HTTP method can be explicitly mentioned: @RequestMapping(value =
     // "/users", method = RequestMethod.GET)
 
-    @GetMapping("/home") // HTTP GET METHOD
+    @GetMapping(value = "/home") // HTTP GET METHOD
     public String home(Model model) {
         System.out.println("Homepg");
         return "home";
@@ -74,6 +77,7 @@ public class CourierController {
         return "login";
     }
 
+    // below mentioned are models(MVC) that are injected through @Autowired
     @Autowired
     private AdminService adminService;
     @Autowired
@@ -87,7 +91,7 @@ public class CourierController {
     @Autowired
     private DeliverLogRepository deliverlogRepository;
 
-    @GetMapping("/admin")
+    @GetMapping(value = "/admin")
     public String adminPage(User user, Model model) {
         model.addAttribute("user", new User());
         return "admin";
@@ -119,7 +123,7 @@ public class CourierController {
     }
 
     @PostMapping("/login")
-    public String processLogin(User user, Model model) {
+    public String processLogin(@RequestBody User user, Model model) {
         boolean isValid = adminService.validateLogin(user.getPassword(), user.getUsername());
         if (isValid) {
             return "redirect:/login";

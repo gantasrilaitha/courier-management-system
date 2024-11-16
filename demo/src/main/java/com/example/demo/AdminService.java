@@ -7,10 +7,12 @@ import org.springframework.stereotype.Service;
 
 //Instead of an XML file, Spring Boot applications typically use Java classes annotated with @Configuration to define beans.
 //Spring Boot automatically scans for components (beans) by default using annotations like @Component, @Service, @Repository, and @Controller.
+
+//servie(model) class & interacts with db
 @Service
 public class AdminService {
 
-    @Autowired
+    @Autowired // added depencies using @Autowired
     private AdminRepository adminRepository;
 
     public boolean validateLogin(String password, String username) {
