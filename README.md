@@ -45,8 +45,9 @@ Refer to [Codebase](https://github.com/gantasrilaitha/courier-management-java/tr
   - DB_URL=jdbc:mysql://localhost:<MYSQL_DATABASE_PORT>/<DATABASE_NAME>
   - DB_USERNAME=<MYSQL_DATABASE_USERNAME>
   - DB_PASSWORD=<MYSQL_DATABSE_PASSWORD>
-
-3. Ensure `.env` file is created under the root directory i.e ```demo``` .
+  
+3. Have some dummy username & password under the admin , newstaff and customer lopgin tables.
+4. Ensure `.env` file is created under the root directory i.e ```demo``` .
 
 
 
