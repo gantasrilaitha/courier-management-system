@@ -50,8 +50,8 @@ Refer to [Codebase](https://github.com/gantasrilaitha/courier-management-java/tr
 4. Ensure `.env` file is created under the root directory i.e ```demo``` .
 
 ## **Preview**
+[Online Courier Management System.webm](https://github.com/user-attachments/assets/60dcb8a5-7ac4-4bfd-964c-0eb7922675e2)
 
-[Have a look](https://tinyurl.com/2ch8mkhc)
 
 
 
