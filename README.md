@@ -49,6 +49,11 @@ Refer to [Codebase](https://github.com/gantasrilaitha/courier-management-java/tr
 3. Have some dummy username & password under the admin , newstaff and customer lopgin tables.
 4. Ensure `.env` file is created under the root directory i.e ```demo``` .
 
+## **Preview**
+
+[Have a look](https://tinyurl.com/2ch8mkhc)
+
+
 
 
 
