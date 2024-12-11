@@ -36,6 +36,7 @@ Refer to [Codebase](https://github.com/gantasrilaitha/courier-management-java/tr
 1. change directory :```cd demo```
 2. ```mvn spring-boot:run``` to run the application
 3. visit ```localhost:8080/home``` to see the application running
+4. you can test the endpoints using Postman
 
 
 
