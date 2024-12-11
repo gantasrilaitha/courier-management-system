@@ -1,41 +1,28 @@
 package com.example.demo;
 
-import org.springframework.core.io.InputStreamResource;
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.Graphics2D;
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.util.List;
+import java.util.Optional;
+import java.util.Random;
+
+import javax.imageio.ImageIO;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
-
-import java.util.Optional;
-import java.awt.*;
-import java.awt.image.BufferedImage;
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.util.Random;
-import java.io.InputStream;
-import java.nio.charset.StandardCharsets;
-import javax.imageio.ImageIO;
-
-import org.springframework.stereotype.Component;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
-
-import com.example.demo.StaffRepository;
-import com.example.demo.Staff;
-import java.util.List;
 
 //below mwntioned class will be the controller class
 @Controller // only for web projects, uses MVC
@@ -78,6 +65,7 @@ public class CourierController {
     }
 
     // below mentioned are models(MVC) that are injected through @Autowired
+    // ;implicitly follow setter injection
     @Autowired
     private AdminService adminService;
     @Autowired
@@ -91,7 +79,7 @@ public class CourierController {
     @Autowired
     private DeliverLogRepository deliverlogRepository;
 
-    @GetMapping(value = "/admin")
+    @GetMapping("/admin")
     public String adminPage(User user, Model model) {
         model.addAttribute("user", new User());
         return "admin";
@@ -123,7 +111,7 @@ public class CourierController {
     }
 
     @PostMapping("/login")
-    public String processLogin(@RequestBody User user, Model model) {
+    public String processLogin(User user, Model model) {
         boolean isValid = adminService.validateLogin(user.getPassword(), user.getUsername());
         if (isValid) {
             return "redirect:/login";

@@ -4,6 +4,10 @@ target/
 !**/src/main/**/target/
 !**/src/test/**/target/
 
+### db credentials###
+.env
+
+
 ### STS ###
 .apt_generated
 .classpath
@@ -31,3 +35,4 @@ build/
 
 ### VS Code ###
 .vscode/
+/bin/

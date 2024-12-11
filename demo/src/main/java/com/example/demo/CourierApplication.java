@@ -3,6 +3,8 @@ package com.example.demo;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import io.github.cdimascio.dotenv.Dotenv;
+
 //Hibernate SessionFactory is managed automatically by Spring Boot when you use spring-boot-starter-data-jpa.
 //Session: trnsaction in a database
 //EntityManager is the interface , high level abstraction,part of JPA
@@ -59,6 +61,18 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class CourierApplication {
 
 	public static void main(String[] args) {
+
+		// Load the .env file
+        Dotenv dotenv = Dotenv.configure()
+                              .directory("./")  // Specify the directory where .env is located
+                              .load();
+
+        // Set environment variables
+        System.setProperty("DB_URL", dotenv.get("DB_URL"));
+        System.setProperty("DB_USERNAME", dotenv.get("DB_USERNAME"));
+        System.setProperty("DB_PASSWORD", dotenv.get("DB_PASSWORD"));
+
+
 		SpringApplication.run(CourierApplication.class, args);
 	}
 
