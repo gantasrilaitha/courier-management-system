@@ -38,7 +38,15 @@ Refer to [Codebase](https://github.com/gantasrilaitha/courier-management-java/tr
 3. visit ```localhost:8080/home``` to see the application running
 4. you can test the endpoints using Postman
 
+## **Note**
+1. Create a database in mysql(<DATABASE_NAME>) under which all entity tables will get created
+2. Create ``.env `` file is created containing all database connections credentials. It should contain the following:
+  
+  - DB_URL=jdbc:mysql://localhost:<MYSQL_DATABASE_PORT>/<DATABASE_NAME>
+  - DB_USERNAME=<MYSQL_DATABASE_USERNAME>
+  - DB_PASSWORD=<MYSQL_DATABSE_PASSWORD>
 
+3. Ensure `.env` file is created under the root directory i.e ```demo``` .
 
 
 
