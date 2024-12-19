@@ -110,10 +110,11 @@ public class CourierController {
         return "cuslogin";
     }
 
-    @PostMapping("/login")
+    @PostMapping(value="/login",consumes = {  MediaType.APPLICATION_FORM_URLENCODED_VALUE })
     public String processLogin(User user, Model model) {
         boolean isValid = adminService.validateLogin(user.getPassword(), user.getUsername());
         if (isValid) {
+            
             return "redirect:/login";
         } else {
             model.addAttribute("error", "Invalid username or password");
