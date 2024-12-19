@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -98,7 +98,7 @@
         <button onclick="window.location.href='/managestaff'">Manage Staff</button>
     </div>
     
-    <div id="updateCostForm">
+    <div id="updateCostForm" style="display: none;">
         <h2>Update Cost</h2>
         <form id="updateCostFormSubmit">
             <label for="cost">Enter Updated Cost:</label>
